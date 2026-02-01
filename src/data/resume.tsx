@@ -1,66 +1,64 @@
 import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon } from "lucide-react";
-import { ReactLight } from "@/components/ui/svgs/reactLight";
-import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
-import { Typescript } from "@/components/ui/svgs/typescript";
 import { Nodejs } from "@/components/ui/svgs/nodejs";
 import { Python } from "@/components/ui/svgs/python";
-import { Golang } from "@/components/ui/svgs/golang";
-import { Postgresql } from "@/components/ui/svgs/postgresql";
-import { Docker } from "@/components/ui/svgs/docker";
-import { Kubernetes } from "@/components/ui/svgs/kubernetes";
-import { Java } from "@/components/ui/svgs/java";
-import { Csharp } from "@/components/ui/svgs/csharp";
+import { ClaudeAI } from "@/components/ui/svgs/claudeai";
+import { Gemini } from "@/components/ui/svgs/gemini";
+import { ChatGPT } from "@/components/ui/svgs/chatgpt";
+import { Cursor } from "@/components/ui/svgs/cursor";
+import { Lovable } from "@/components/ui/svgs/lovable";
+import { Grok } from "@/components/ui/svgs/grok";
+import { GoogleAIStudio } from "@/components/ui/svgs/googleaistudio";
+import { NotebookLM } from "@/components/ui/svgs/notebooklm";
 
 export const DATA = {
-  name: "Dillion Verma",
-  initials: "DV",
-  url: "https://dillion.io",
-  location: "San Francisco, CA",
-  locationLink: "https://www.google.com/maps/place/sanfrancisco",
+  name: "Bhaskar Saikia",
+  initials: "BS",
+  url: "https://bhaskarsaikia.in",
+  location: "Golaghat, Assam, India",
+  locationLink: "https://www.google.com/maps/place/golaghat",
   description:
-    "Software Engineer turned Entrepreneur. I love building things and helping people. Very active on Twitter.",
+    "Learning, experimenting, and shipping AI projects",
   summary:
-    "At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
-  avatarUrl: "/me.png",
+    "I'm a 12th-grade student interested in AI, automation, and web development. I've built several working projects using Python, JavaScript, and AI APIs to solve real problems for myself and people around me.",
+  avatarUrl: "/me.jpeg",
   skills: [
-    { name: "React", icon: ReactLight },
-    { name: "Next.js", icon: NextjsIconDark },
-    { name: "Typescript", icon: Typescript },
-    { name: "Node.js", icon: Nodejs },
     { name: "Python", icon: Python },
-    { name: "Go", icon: Golang },
-    { name: "Postgres", icon: Postgresql },
-    { name: "Docker", icon: Docker },
-    { name: "Kubernetes", icon: Kubernetes },
-    { name: "Java", icon: Java },
-    { name: "C++", icon: Csharp },
+    { name: "Node.js", icon: Nodejs },
+    { name: "Claude", icon: ClaudeAI },
+    { name: "Gemini", icon: Gemini },
+    { name: "ChatGPT", icon: ChatGPT },
+    { name: "Cursor", icon: Cursor },
+    { name: "Lovable", icon: Lovable },
+    { name: "Grok", icon: Grok },
+    { name: "Google AI Studio", icon: GoogleAIStudio },
+    { name: "NotebookLM", icon: NotebookLM },
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
-    email: "hello@example.com",
-    tel: "+123456789",
+    email: "hi@bhaskarsaikia.in",
+    tel: "Null",
     social: {
       GitHub: {
         name: "GitHub",
-        url: "https://dub.sh/dillion-github",
+        url: "https://github.com/bhaskarsaikia-17/",
         icon: Icons.github,
         navbar: true,
       },
 
       LinkedIn: {
         name: "LinkedIn",
-        url: "https://dub.sh/dillion-linkedin",
+        url: "https://www.linkedin.com/in/bhaskarsaikia17",
         icon: Icons.linkedin,
 
         navbar: true,
       },
       X: {
         name: "X",
-        url: "https://dub.sh/dillion-twitter",
+        url: "https://x.com/BhaskarSaikia69",
         icon: Icons.x,
 
         navbar: true,
@@ -69,14 +67,14 @@ export const DATA = {
         name: "Youtube",
         url: "https://dub.sh/dillion-youtube",
         icon: Icons.youtube,
-        navbar: true,
+        navbar: false,
       },
       email: {
         name: "Send Email",
-        url: "#",
+        url: "mailto:hi@bhaskarsaikia.in",
         icon: Icons.email,
 
-        navbar: false,
+        navbar: true,
       },
     },
   },
@@ -191,126 +189,118 @@ export const DATA = {
   ],
   projects: [
     {
-      title: "Chat Collect",
-      href: "https://chatcollect.com",
-      dates: "Jan 2024 - Feb 2024",
+      title: "Temporary Mail",
+      href: "https://mail.nynx.in",
+      dates: "Dec 2025 - Present",
       active: true,
       description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
+        "Nynx Temp Mail - Advanced free instant private emails. Protect your privacy with disposable temporary email addresses that expire in 24 hours.",
       technologies: [
-        "Next.js",
+        "React",
         "Typescript",
-        "PostgreSQL",
-        "Prisma",
+        "Supabase",
         "TailwindCSS",
-        "Stripe",
         "Shadcn UI",
-        "Magic UI",
+        "Python",
+        "FastAPI",
+        "Redis",
+        "Vercel",
       ],
       links: [
         {
           type: "Website",
-          href: "https://chatcollect.com",
+          href: "https://mail.nynx.in",
           icon: <Icons.globe className="size-3" />,
         },
       ],
       image: "",
       video:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
+        "https://pub-bc8ac1fbdd9845d5816f234209228487.r2.dev/TempMail.mp4",
     },
     {
-      title: "Magic UI",
-      href: "https://magicui.design",
-      dates: "June 2023 - Present",
+      title: "Flex",
+      href: "https://flex.nynx.in",
+      dates: "Dec 2025 - Present",
       active: true,
       description:
-        "Designed, developed and sold animated UI components for developers.",
+        "Flex is a free file sharing platform, Upload files securely and generate shareable links. No signup required. Fast, private.",
       technologies: [
-        "Next.js",
+        "React",
         "Typescript",
-        "PostgreSQL",
-        "Prisma",
+        "Supabase",
         "TailwindCSS",
-        "Stripe",
         "Shadcn UI",
-        "Magic UI",
+        "Python",
+        "FastAPI",
+        "Tebi.io",
+        "Vercel",
       ],
       links: [
         {
           type: "Website",
-          href: "https://magicui.design",
+          href: "https://flex.nynx.in",
+          icon: <Icons.globe className="size-3" />,
+        }
+      ],
+      image: "",
+      video: "https://pub-bc8ac1fbdd9845d5816f234209228487.r2.dev/Flex-Files.mp4",
+    },
+    {
+      title: "Dev Tools",
+      href: "https://tools.nynx.in",
+      dates: "Dec 2024 - Present",
+      active: true,
+      description:
+        "Web Based 14+ free online developer tools: CC generator, fake identity, IP lookup, DNS lookup, WHOIS, password generator, QR code, JSON formatter, and more.",
+      technologies: [
+        "React",
+        "Typescript",
+        "TailwindCSS",
+        "Shadcn UI",
+        "Vercel",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://tools.nynx.in",
+          icon: <Icons.globe className="size-3" />,
+        }
+      ],
+      image: "",
+      video: "https://pub-bc8ac1fbdd9845d5816f234209228487.r2.dev/DevTools.mp4",
+    },
+    {
+      title: "Licenium - License Management Dashboard",
+      href: "https://licenium.bhaskar.pro",
+      dates: "Jan 2026 - Present",
+      active: true,
+      description:
+        "A full stack software license management dashboard with apps, licenses, analytics, audit logs features.",
+      technologies: [
+        "React",
+        "Typescript",
+        "Redis",
+        "TailwindCSS",
+        "Shadcn UI",
+        "Python",
+        "Flask",
+        "Vercel",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://licenium.bhaskar.pro",
           icon: <Icons.globe className="size-3" />,
         },
         {
-          type: "Source",
-          href: "https://github.com/magicuidesign/magicui",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "",
-      video: "https://cdn.magicui.design/bento-grid.mp4",
-    },
-    {
-      title: "llm.report",
-      href: "https://llm.report",
-      dates: "April 2023 - September 2023",
-      active: true,
-      description:
-        "Developed an open-source logging and analytics platform for OpenAI: Log your ChatGPT API requests, analyze costs, and improve your prompts.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Shadcn UI",
-        "Magic UI",
-        "Stripe",
-        "Cloudflare Workers",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://llm.report",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/dillionverma/llm.report",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "",
-      video: "https://cdn.llm.report/openai-demo.mp4",
-    },
-    {
-      title: "Automatic Chat",
-      href: "https://automatic.chat",
-      dates: "April 2023 - March 2024",
-      active: true,
-      description:
-        "Developed an AI Customer Support Chatbot which automatically responds to customer support tickets using the latest GPT models.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Shadcn UI",
-        "Magic UI",
-        "Stripe",
-        "Cloudflare Workers",
-      ],
-      links: [
-        {
-          type: "Website",
-          href: "https://automatic.chat",
+          type: "Buy Now",
+          href: "https://sparkboosts.mysellauth.com/product/licenium-license-management-dashboard",
           icon: <Icons.globe className="size-3" />,
         },
       ],
       image: "",
       video:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/automatic-chat.mp4",
+        "https://pub-bc8ac1fbdd9845d5816f234209228487.r2.dev/Licenium.mp4",
     },
   ],
   hackathons: [

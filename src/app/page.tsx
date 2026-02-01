@@ -55,6 +55,7 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
+      {/* Hidden: Work Experience section
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
@@ -65,6 +66,8 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
+      */}
+      {/* Hidden: Education section
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
@@ -113,10 +116,11 @@ export default function Page() {
           </div>
         </div>
       </section>
+      */}
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-4">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="text-xl font-bold">Skills</h2>
+            <h2 className="text-xl font-bold">Skills & Tools</h2>
           </BlurFade>
           <div className="flex flex-wrap gap-2">
             {DATA.skills.map((skill, id) => (
@@ -135,11 +139,13 @@ export default function Page() {
           <ProjectsSection />
         </BlurFade>
       </section>
+      {/* Hidden: Hackathons section
       <section id="hackathons">
         <BlurFade delay={BLUR_FADE_DELAY * 13}>
           <HackathonsSection />
         </BlurFade>
       </section>
+      */}
       <section id="contact">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
           <ContactSection />
