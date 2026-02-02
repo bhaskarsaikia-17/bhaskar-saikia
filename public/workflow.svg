@@ -1,0 +1,85 @@
+<svg width="900" height="160" viewBox="0 0 900 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Step 1: Idea -->
+  <g transform="translate(30, 20)">
+    <circle cx="50" cy="50" r="46" stroke="#000000" stroke-width="3" fill="none"/>
+    <circle cx="50" cy="50" r="36" fill="#3D3D3D"/>
+    <!-- Lightbulb icon - simple and clean -->
+    <circle cx="50" cy="42" r="10" stroke="white" stroke-width="2.5" fill="none"/>
+    <line x1="50" y1="52" x2="50" y2="58" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="45" y1="61" x2="55" y2="61" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="46" y1="65" x2="54" y2="65" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="50" y="115" text-anchor="middle" fill="#3D3D3D" font-family="system-ui, sans-serif" font-size="15" font-weight="600">Idea</text>
+    <text x="50" y="132" text-anchor="middle" fill="#666" font-family="system-ui, sans-serif" font-size="11">Problem Discovery</text>
+  </g>
+  
+  <!-- Arrow 1 -->
+  <g transform="translate(138, 50)">
+    <circle cx="0" cy="20" r="4" fill="#3D3D3D"/>
+    <line x1="8" y1="20" x2="45" y2="20" stroke="#3D3D3D" stroke-width="2" stroke-dasharray="4,4"/>
+    <polygon points="55,20 45,14 45,26" fill="#000000"/>
+  </g>
+  
+  <!-- Step 2: Research -->
+  <g transform="translate(200, 20)">
+    <circle cx="50" cy="50" r="46" stroke="#000000" stroke-width="3" fill="none"/>
+    <circle cx="50" cy="50" r="36" fill="#3D3D3D"/>
+    <!-- Magnifying glass icon -->
+    <path d="M62 60l-6-6c1.3-1.8 2-4 2-6.5 0-6.4-5.1-11.5-11.5-11.5S35 41.1 35 47.5 40.1 59 46.5 59c2.5 0 4.7-.7 6.5-2l6 6 3-3zm-15.5-5c-4.1 0-7.5-3.4-7.5-7.5s3.4-7.5 7.5-7.5 7.5 3.4 7.5 7.5-3.4 7.5-7.5 7.5z" fill="white"/>
+    <text x="50" y="115" text-anchor="middle" fill="#3D3D3D" font-family="system-ui, sans-serif" font-size="15" font-weight="600">Research</text>
+    <text x="50" y="132" text-anchor="middle" fill="#666" font-family="system-ui, sans-serif" font-size="11">Learning &amp; Planning</text>
+  </g>
+  
+  <!-- Arrow 2 -->
+  <g transform="translate(308, 50)">
+    <circle cx="0" cy="20" r="4" fill="#3D3D3D"/>
+    <line x1="8" y1="20" x2="45" y2="20" stroke="#3D3D3D" stroke-width="2" stroke-dasharray="4,4"/>
+    <polygon points="55,20 45,14 45,26" fill="#000000"/>
+  </g>
+  
+  <!-- Step 3: Build -->
+  <g transform="translate(370, 20)">
+    <circle cx="50" cy="50" r="46" stroke="#000000" stroke-width="3" fill="none"/>
+    <circle cx="50" cy="50" r="36" fill="#3D3D3D"/>
+    <!-- Code brackets icon -->
+    <path d="M42 38l-10 12 10 12 3-3-7-9 7-9-3-3zm16 0l-3 3 7 9-7 9 3 3 10-12-10-12z" fill="white"/>
+    <text x="50" y="115" text-anchor="middle" fill="#3D3D3D" font-family="system-ui, sans-serif" font-size="15" font-weight="600">Build</text>
+    <text x="50" y="132" text-anchor="middle" fill="#666" font-family="system-ui, sans-serif" font-size="11">AI + Code</text>
+  </g>
+  
+  <!-- Arrow 3 -->
+  <g transform="translate(478, 50)">
+    <circle cx="0" cy="20" r="4" fill="#3D3D3D"/>
+    <line x1="8" y1="20" x2="45" y2="20" stroke="#3D3D3D" stroke-width="2" stroke-dasharray="4,4"/>
+    <polygon points="55,20 45,14 45,26" fill="#000000"/>
+  </g>
+  
+  <!-- Step 4: Test -->
+  <g transform="translate(540, 20)">
+    <circle cx="50" cy="50" r="46" stroke="#000000" stroke-width="3" fill="none"/>
+    <circle cx="50" cy="50" r="36" fill="#3D3D3D"/>
+    <!-- Refresh/sync icon -->
+    <path d="M62 50c0-6.6-5.4-12-12-12v4c4.4 0 8 3.6 8 8h-4l6 6 6-6h-4zm-24 0c0 6.6 5.4 12 12 12v-4c-4.4 0-8-3.6-8-8h4l-6-6-6 6h4z" fill="white"/>
+    <text x="50" y="115" text-anchor="middle" fill="#3D3D3D" font-family="system-ui, sans-serif" font-size="15" font-weight="600">Test</text>
+    <text x="50" y="132" text-anchor="middle" fill="#666" font-family="system-ui, sans-serif" font-size="11">Refine &amp; Iterate</text>
+  </g>
+  
+  <!-- Arrow 4 -->
+  <g transform="translate(648, 50)">
+    <circle cx="0" cy="20" r="4" fill="#3D3D3D"/>
+    <line x1="8" y1="20" x2="45" y2="20" stroke="#3D3D3D" stroke-width="2" stroke-dasharray="4,4"/>
+    <polygon points="55,20 45,14 45,26" fill="#000000"/>
+  </g>
+  
+  <!-- Step 5: Ship -->
+  <g transform="translate(710, 20)">
+    <circle cx="50" cy="50" r="46" stroke="#000000" stroke-width="3" fill="none"/>
+    <circle cx="50" cy="50" r="36" fill="#3D3D3D"/>
+    <!-- Rocket icon - simple and clean -->
+    <path d="M50 32 L56 50 L53 50 L53 60 L47 60 L47 50 L44 50 Z" fill="white"/>
+    <circle cx="50" cy="44" r="3" fill="#3D3D3D"/>
+    <path d="M44 55 L40 62 L44 58" fill="white"/>
+    <path d="M56 55 L60 62 L56 58" fill="white"/>
+    <text x="50" y="115" text-anchor="middle" fill="#3D3D3D" font-family="system-ui, sans-serif" font-size="15" font-weight="600">Ship</text>
+    <text x="50" y="132" text-anchor="middle" fill="#666" font-family="system-ui, sans-serif" font-size="11">Deploy &amp; Share</text>
+  </g>
+</svg>

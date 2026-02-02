@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
+import { HomeIcon, FolderKanban, NotebookIcon } from "lucide-react";
 import { Nodejs } from "@/components/ui/svgs/nodejs";
 import { Python } from "@/components/ui/svgs/python";
 import { ClaudeAI } from "@/components/ui/svgs/claudeai";
@@ -34,8 +34,18 @@ export const DATA = {
     { name: "Google AI Studio", icon: GoogleAIStudio },
     { name: "NotebookLM", icon: NotebookLM },
   ],
+  workflow: {
+    steps: [
+      { title: "Idea", subtitle: "Problem Discovery" },
+      { title: "Research", subtitle: "Learning & Planning" },
+      { title: "Build", subtitle: "AI + Code" },
+      { title: "Test", subtitle: "Refine & Iterate" },
+      { title: "Ship", subtitle: "Deploy & Share" },
+    ],
+  },
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
+    { href: "/projects", icon: FolderKanban, label: "Projects" },
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
@@ -69,7 +79,7 @@ export const DATA = {
         icon: Icons.youtube,
         navbar: false,
       },
-      email: {
+      Email: {
         name: "Send Email",
         url: "mailto:hi@bhaskarsaikia.in",
         icon: Icons.email,

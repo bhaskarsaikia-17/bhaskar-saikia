@@ -9,6 +9,7 @@ import ContactSection from "@/components/section/contact-section";
 import HackathonsSection from "@/components/section/hackathons-section";
 import ProjectsSection from "@/components/section/projects-section";
 import WorkSection from "@/components/section/work-section";
+import WorkflowSection from "@/components/section/workflow-section";
 import { ArrowUpRight } from "lucide-react";
 
 const BLUR_FADE_DELAY = 0.04;
@@ -133,6 +134,11 @@ export default function Page() {
             ))}
           </div>
         </div>
+      </section>
+      <section id="workflow">
+        <BlurFade delay={BLUR_FADE_DELAY * 10.5}>
+          <WorkflowSection />
+        </BlurFade>
       </section>
       <section id="projects">
         <BlurFade delay={BLUR_FADE_DELAY * 11}>
