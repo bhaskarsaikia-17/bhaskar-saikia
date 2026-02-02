@@ -5,6 +5,7 @@ import { Python } from "@/components/ui/svgs/python";
 import { ClaudeAI } from "@/components/ui/svgs/claudeai";
 import { Gemini } from "@/components/ui/svgs/gemini";
 import { ChatGPT } from "@/components/ui/svgs/chatgpt";
+import { Antigravity } from "@/components/ui/svgs/antigravity";
 import { Cursor } from "@/components/ui/svgs/cursor";
 import { Lovable } from "@/components/ui/svgs/lovable";
 import { Grok } from "@/components/ui/svgs/grok";
@@ -28,6 +29,7 @@ export const DATA = {
     { name: "Claude", icon: ClaudeAI },
     { name: "Gemini", icon: Gemini },
     { name: "ChatGPT", icon: ChatGPT },
+    { name: "Antigravity", icon: Antigravity },
     { name: "Cursor", icon: Cursor },
     { name: "Lovable", icon: Lovable },
     { name: "Grok", icon: Grok },
