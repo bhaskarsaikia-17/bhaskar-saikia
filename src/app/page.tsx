@@ -119,16 +119,24 @@ export default function Page() {
       </section>
       */}
       <section id="skills">
-        <div className="flex min-h-0 flex-col gap-y-4">
+        <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
             <h2 className="text-xl font-bold">Skills & Tools</h2>
           </BlurFade>
-          <div className="flex flex-wrap gap-2">
-            {DATA.skills.map((skill, id) => (
-              <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <div className="border bg-background border-border ring-2 ring-border/20 rounded-xl h-8 w-fit px-4 flex items-center gap-2">
-                  {skill.icon && <skill.icon className="size-4 rounded overflow-hidden object-contain" />}
-                  <span className="text-foreground text-sm font-medium">{skill.name}</span>
+          <div className="flex flex-col gap-3">
+            {Object.entries(DATA.skills).map(([key, category], categoryIndex) => (
+              <BlurFade key={key} delay={BLUR_FADE_DELAY * 10 + categoryIndex * 0.03}>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-sm font-medium text-muted-foreground min-w-fit">{category.title}:</span>
+                  {category.items.map((skill) => (
+                    <div
+                      key={skill.name}
+                      className="border bg-background border-border ring-1 ring-border/20 rounded-lg h-7 w-fit px-2.5 flex items-center gap-1.5"
+                    >
+                      {skill.icon && <skill.icon className="size-4 text-foreground" />}
+                      <span className="text-foreground text-xs font-medium">{skill.name}</span>
+                    </div>
+                  ))}
                 </div>
               </BlurFade>
             ))}

@@ -11,6 +11,18 @@ import { Lovable } from "@/components/ui/svgs/lovable";
 import { Grok } from "@/components/ui/svgs/grok";
 import { GoogleAIStudio } from "@/components/ui/svgs/googleaistudio";
 import { NotebookLM } from "@/components/ui/svgs/notebooklm";
+import { Notion } from "@/components/ui/svgs/notion";
+import { Discord } from "@/components/ui/svgs/discord";
+import { Telegram } from "@/components/ui/svgs/telegram";
+import { Github } from "@/components/ui/svgs/github";
+import { Vercel } from "@/components/ui/svgs/vercel";
+import { ReactDark } from "@/components/ui/svgs/reactDark";
+import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
+import { Typescript } from "@/components/ui/svgs/typescript";
+import { Supabase } from "@/components/ui/svgs/supabase";
+import { Redis } from "@/components/ui/svgs/redis";
+import { Spotify } from "@/components/ui/svgs/spotify";
+import { AppleMusic } from "@/components/ui/svgs/applemusic";
 
 export const DATA = {
   name: "Bhaskar Saikia",
@@ -23,19 +35,65 @@ export const DATA = {
   summary:
     "I'm a 12th-grade student interested in AI, automation, and web development. I've built several working projects using Python, JavaScript, and AI APIs to solve real problems for myself and people around me.",
   avatarUrl: "/me.jpeg",
-  skills: [
-    { name: "Python", icon: Python },
-    { name: "Node.js", icon: Nodejs },
-    { name: "Claude", icon: ClaudeAI },
-    { name: "Gemini", icon: Gemini },
-    { name: "ChatGPT", icon: ChatGPT },
-    { name: "Antigravity", icon: Antigravity },
-    { name: "Cursor", icon: Cursor },
-    { name: "Lovable", icon: Lovable },
-    { name: "Grok", icon: Grok },
-    { name: "Google AI Studio", icon: GoogleAIStudio },
-    { name: "NotebookLM", icon: NotebookLM },
-  ],
+  skills: {
+    languagesBackend: {
+      title: "Languages & Backend",
+      items: [
+        { name: "Python", icon: Python },
+        { name: "Node.js", icon: Nodejs },
+      ],
+    },
+    frontendUI: {
+      title: "Frontend & UI",
+      items: [
+        { name: "React", icon: ReactDark },
+        { name: "Next.js", icon: NextjsIconDark },
+      ],
+    },
+    aiModels: {
+      title: "AI Models & Platforms",
+      items: [
+        { name: "Claude", icon: ClaudeAI },
+        { name: "Gemini", icon: Gemini },
+        { name: "ChatGPT", icon: ChatGPT },
+        { name: "Grok", icon: Grok },
+        { name: "Google AI Studio", icon: GoogleAIStudio },
+        { name: "NotebookLM", icon: NotebookLM },
+      ],
+    },
+    aiCodingTools: {
+      title: "AI Coding Tools",
+      items: [
+        { name: "Cursor", icon: Cursor },
+        { name: "Antigravity", icon: Antigravity },
+        { name: "Lovable", icon: Lovable },
+      ],
+    },
+    hostingInfra: {
+      title: "Hosting & Infra",
+      items: [
+        { name: "Vercel", icon: Vercel },
+        { name: "Supabase", icon: Supabase },
+        { name: "Redis", icon: Redis },
+      ],
+    },
+    workflow: {
+      title: "Workflow",
+      items: [
+        { name: "GitHub", icon: Github },
+        { name: "Notion", icon: Notion },
+        { name: "Discord", icon: Discord },
+        { name: "Telegram", icon: Telegram },
+      ],
+    },
+    musicFocus: {
+      title: "Music / Focus",
+      items: [
+        { name: "Spotify", icon: Spotify },
+        { name: "Apple Music", icon: AppleMusic },
+      ],
+    },
+  },
   workflow: {
     steps: [
       { title: "Idea", subtitle: "Problem Discovery" },
