@@ -35,6 +35,28 @@ export const DATA = {
   summary:
     "I'm a 12th-grade student interested in AI, automation, and web development. I've built several working projects using Python, JavaScript, and AI APIs to solve real problems for myself and people around me.",
   avatarUrl: "/me.jpeg",
+  keywords: [
+    "Bhaskar Saikia",
+    "Software Engineer",
+    "Full Stack Developer",
+    "AI Engineer",
+    "Web Developer",
+    "Student",
+    "Portfolio",
+    "Projects",
+    "Blog",
+    "Python",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Supabase",
+    "TailwindCSS",
+    "FastAPI",
+    "Machine Learning",
+    "Artificial Intelligence",
+    "Open Source",
+  ] as const,
   skills: {
     languagesBackend: {
       title: "Languages & Backend",
@@ -87,7 +109,7 @@ export const DATA = {
       ],
     },
     musicFocus: {
-      title: "Music / Focus",
+      title: "Music",
       items: [
         { name: "Spotify", icon: Spotify },
         { name: "Apple Music", icon: AppleMusic },

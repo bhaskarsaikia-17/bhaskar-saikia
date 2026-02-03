@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
@@ -20,6 +21,11 @@ const geistMono = Geist_Mono({
   variable: "--font-mono",
 });
 
+const newsreader = localFont({
+  src: "../../public/fonts/Newsreader-Italic.ttf",
+  variable: "--font-newsreader",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   title: {
@@ -27,6 +33,14 @@ export const metadata: Metadata = {
     template: `%s | ${DATA.name}`,
   },
   description: DATA.description,
+  keywords: [...DATA.keywords],
+  authors: [
+    {
+      name: DATA.name,
+      url: DATA.url,
+    },
+  ],
+  creator: DATA.name,
   icons: {
     icon: "/bs-logo.png",
     shortcut: "/bs-logo.png",
@@ -72,7 +86,8 @@ export default function RootLayout({
         className={cn(
           "min-h-screen bg-background font-sans antialiased relative",
           geist.variable,
-          geistMono.variable
+          geistMono.variable,
+          newsreader.variable
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="light">
