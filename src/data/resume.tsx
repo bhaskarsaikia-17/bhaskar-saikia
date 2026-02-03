@@ -282,6 +282,34 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Droplight",
+      href: "https://droplight.in",
+      dates: "Feb 2026 - Present",
+      active: true,
+      description:
+        "A stunning, modern landing page designed to captivate visitors with seamless animations, beautiful UI components, and a premium design aesthetic. Built with cutting-edge technologies for optimal performance and visual impact.",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "TailwindCSS",
+        "Shadcn UI",
+        "Magic UI",
+        "Aceternity UI",
+        "Cloudflare R2",
+        "Vercel",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://droplight.in",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video:
+        "https://pub-bc8ac1fbdd9845d5816f234209228487.r2.dev/droplight.mp4",
+    },
+    {
       title: "Temporary Mail",
       href: "https://mail.nynx.in",
       dates: "Dec 2025 - Present",

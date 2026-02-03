@@ -1,47 +1,76 @@
-<div align="center">
-<img alt="Portfolio" src="https://github.com/dillionverma/portfolio/assets/16860528/57ffca81-3f0a-4425-b31d-094f61725455" width="90%">
-</div>
+# Bhaskar Saikia - Portfolio
 
-# Portfolio [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdillionverma%2Fportfolio)
+Learning, experimenting, and shipping AI projects.
 
-Built with next.js, [shadcn/ui](https://ui.shadcn.com/), and [magic ui](https://magicui.design/), deployed on Vercel.
+This is my personal portfolio website built with modern web technologies. It showcases my projects, skills, and professional journey.
 
-# Features
+## 🚀 Tech Stack
 
-- Setup only takes a few minutes by editing the [single config file](./src/data/resume.tsx)
-- Built using Next.js 14, React, Typescript, Shadcn/UI, TailwindCSS, Framer Motion, Magic UI
-- Includes a blog
-- Responsive for different devices
-- Optimized for Next.js and Vercel
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **UI & Components**: [React 19](https://react.dev/), [Tailwind CSS 4](https://tailwindcss.com/), [Shadcn UI](https://ui.shadcn.com/)
+- **Animations**: [Magic UI](https://magicui.design/), [Aceternity UI](https://ui.aceternity.com/), [Motion](https://motion.dev/)
+- **Backend & Database**: [Supabase](https://supabase.com/), [Redis](https://redis.io/), [FastAPI](https://fastapi.tiangolo.com/) (for some projects)
+- **Content**: [Content Collections](https://www.content-collections.dev/)
+- **Deployment**: [Vercel](https://vercel.com/)
 
-# Getting Started Locally
+## ✨ Key Features
 
-1. Clone this repository to your local machine:
+- **Animated Hero Section**: Featuring a flickering grid and smooth transitions.
+- **Projects Showcase**: Detailed view of my recent works with video demos and tech stacks.
+- **Skills & Tools**: A comprehensive list of my expertise in AI, Web Dev, and Backend.
+- **Blog**: Sharing insights and learning through MDX-powered blog posts.
+- **Presence**: Real-time Discord status and activity tracking (via Lanyard).
+- **Dark Mode**: Seamless theme switching using `next-themes`.
 
-   ```bash
-   git clone https://github.com/dillionverma/portfolio
-   ```
+## 📁 Project Structure
 
-2. Move to the cloned directory
+```text
+├── src/
+│   ├── app/            # Next.js App Router (pages and layouts)
+│   ├── components/     # React components (UI, MagicUI, Navbar, etc.)
+│   ├── data/           # Resume and project data (resume.tsx)
+│   ├── lib/            # Utility functions and shared logic
+│   ├── public/         # Static assets (images, videos, fonts)
+│   └── content/        # Blog posts and MDX content
+├── package.json        # Dependencies and scripts
+└── next.config.mjs     # Next.js configuration
+```
 
-   ```bash
-   cd portfolio
-   ```
+## 🛠️ Getting Started
 
-3. Install dependencies:
+### Prerequisites
 
-   ```bash
-   pnpm install
-   ```
+- Node.js >= 18.x
+- pnpm (recommended) or npm
 
-4. Start the local Server:
+### Installation
 
-   ```bash
-   pnpm dev
-   ```
+```bash
+pnpm install
+```
 
-5. Open the [Config file](./src/data/resume.tsx) and make changes
+### Development
 
-# License
+```bash
+pnpm dev
+```
 
-Licensed under the [MIT license](https://github.com/dillionverma/portfolio/blob/main/LICENSE.md).
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Build
+
+```bash
+pnpm build
+```
+
+## 📬 Contact
+
+- **Email**: [hi@bhaskarsaikia.in](mailto:hi@bhaskarsaikia.in)
+- **Website**: [bhaskarsaikia.in](https://bhaskarsaikia.in)
+- **X (Twitter)**: [@BhaskarSaikia69](https://x.com/BhaskarSaikia69)
+- **LinkedIn**: [Bhaskar Saikia](https://www.linkedin.com/in/bhaskarsaikia17)
+- **GitHub**: [@bhaskarsaikia-17](https://github.com/bhaskarsaikia-17/)
+
+---
+
+Built with ❤️ by Bhaskar Saikia
