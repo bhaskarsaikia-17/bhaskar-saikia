@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, FolderKanban, NotebookIcon } from "lucide-react";
+import { HomeIcon, FolderKanban, NotebookIcon, Radio } from "lucide-react";
 import { Nodejs } from "@/components/ui/svgs/nodejs";
 import { Python } from "@/components/ui/svgs/python";
 import { ClaudeAI } from "@/components/ui/svgs/claudeai";
@@ -128,6 +128,7 @@ export const DATA = {
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/projects", icon: FolderKanban, label: "Projects" },
+    { href: "/presence", icon: Radio, label: "Presence" },
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
   contact: {
