@@ -62,6 +62,9 @@ importers:
       react-markdown:
         specifier: ^10.1.0
         version: 10.1.0(@types/react@19.2.7)(react@19.2.3)
+      react-use-lanyard:
+        specifier: ^0.3.6
+        version: 0.3.6(react@19.2.3)
       rehype-pretty-code:
         specifier: ^0.14.1
         version: 0.14.1(shiki@3.20.0)
@@ -3041,6 +3044,11 @@ packages:
       '@types/react': '>=18'
       react: '>=18'
 
+  react-use-lanyard@0.3.6:
+    resolution: {integrity: sha512-n+UU26v8JkZ9xIaL9glVtVZjrByj8z/1dLDxEKlz6BKafdmX5SAvC23TP6M7LM2LbNneyv4/qt9JfZ/ZDgHszA==}
+    peerDependencies:
+      react: '>=16'
+
   react@19.2.3:
     resolution: {integrity: sha512-Ku/hhYbVjOQnXDZFv2+RibmLFGwFdeeKHFcOTlrt7xplBnya5OGn/hIRDsqDiSUcfORsDC7MPxwork8jBwsIWA==}
     engines: {node: '>=0.10.0'}
@@ -3348,6 +3356,11 @@ packages:
   supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+
+  swr@2.4.0:
+    resolution: {integrity: sha512-sUlC20T8EOt1pHmDiqueUWMmRRX03W7w5YxovWX7VR2KHEPCTMly85x05vpkP5i6Bu4h44ePSMD9Tc+G2MItFw==}
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   tailwind-merge@3.4.0:
     resolution: {integrity: sha512-uSaO4gnW+b3Y2aWoWfFpX62vn2sR3skfhbjsEnaBI81WD1wBLlHZe5sWf0AqjksNdYTbGBEd0UasQMT3SNV15g==}
@@ -6922,6 +6935,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  react-use-lanyard@0.3.6(react@19.2.3):
+    dependencies:
+      react: 19.2.3
+      swr: 2.4.0(react@19.2.3)
+      tslib: 2.8.1
+
   react@19.2.3: {}
 
   readdirp@4.1.2: {}
@@ -7378,6 +7397,12 @@ snapshots:
       has-flag: 4.0.0
 
   supports-preserve-symlinks-flag@1.0.0: {}
+
+  swr@2.4.0(react@19.2.3):
+    dependencies:
+      dequal: 2.0.3
+      react: 19.2.3
+      use-sync-external-store: 1.6.0(react@19.2.3)
 
   tailwind-merge@3.4.0: {}
 
