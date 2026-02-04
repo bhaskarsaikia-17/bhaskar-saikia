@@ -41,6 +41,7 @@ const APP_FALLBACK_ICONS: Record<string, string> = {
 
 export function OtherActivity({ activity, discordStatus }: OtherActivityProps) {
     const [imageError, setImageError] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     const getImageUrl = (imageUrl: string | undefined) => {
         if (!imageUrl) {
@@ -84,13 +85,18 @@ export function OtherActivity({ activity, discordStatus }: OtherActivityProps) {
     return (
         <div className="flex items-center gap-3">
             <div className="relative shrink-0" style={{ width: '48px', height: '48px' }}>
+                {/* Skeleton */}
+                {!imageLoaded && (
+                    <div className="absolute inset-0 rounded-md bg-muted animate-pulse" />
+                )}
                 {isExternalUrl || imageError ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                         src={imageError ? getFallbackUrl() : largeImage}
                         alt={activity.name || "Activity status"}
-                        className="rounded-md object-cover w-full h-full"
+                        className={`rounded-md object-cover w-full h-full transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
                         onError={() => setImageError(true)}
+                        onLoad={() => setImageLoaded(true)}
                     />
                 ) : (
                     <Image
@@ -98,8 +104,9 @@ export function OtherActivity({ activity, discordStatus }: OtherActivityProps) {
                         alt={activity.name || "Activity status"}
                         fill
                         sizes="48px"
-                        className="rounded-md object-cover"
+                        className={`rounded-md object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
                         onError={() => setImageError(true)}
+                        onLoad={() => setImageLoaded(true)}
                     />
                 )}
             </div>

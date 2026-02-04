@@ -16,6 +16,29 @@ interface GalleryProps {
     className?: string;
 }
 
+// Individual gallery image with skeleton loading
+function GalleryImageWithSkeleton({ src, alt }: { src: string; alt: string }) {
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    return (
+        <div className="aspect-square rounded-xl overflow-hidden bg-muted relative">
+            {/* Skeleton */}
+            {!imageLoaded && (
+                <div className="absolute inset-0 bg-muted animate-pulse" />
+            )}
+            <Image
+                src={src}
+                alt={alt}
+                fill
+                sizes="(max-width: 640px) 50vw, 200px"
+                className={`object-cover hover:scale-105 transition-all duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                unoptimized
+                onLoad={() => setImageLoaded(true)}
+            />
+        </div>
+    );
+}
+
 export function Gallery({ className }: GalleryProps) {
     const [images, setImages] = useState<GalleryImage[]>([]);
     const [loading, setLoading] = useState(true);
@@ -85,36 +108,20 @@ export function Gallery({ className }: GalleryProps) {
             >
                 {/* Row 1 */}
                 {displayImages.slice(0, 3).map((image, index) => (
-                    <div
+                    <GalleryImageWithSkeleton
                         key={index}
-                        className="aspect-square rounded-xl overflow-hidden bg-muted relative"
-                    >
-                        <Image
-                            src={image.url}
-                            alt={`Gallery photo ${index + 1}`}
-                            fill
-                            sizes="(max-width: 640px) 50vw, 200px"
-                            className="object-cover hover:scale-105 transition-transform duration-300"
-                            unoptimized
-                        />
-                    </div>
+                        src={image.url}
+                        alt={`Gallery photo ${index + 1}`}
+                    />
                 ))}
 
                 {/* Row 2 */}
                 {displayImages.slice(3, 5).map((image, index) => (
-                    <div
+                    <GalleryImageWithSkeleton
                         key={index + 3}
-                        className="aspect-square rounded-xl overflow-hidden bg-muted relative"
-                    >
-                        <Image
-                            src={image.url}
-                            alt={`Gallery photo ${index + 4}`}
-                            fill
-                            sizes="(max-width: 640px) 50vw, 200px"
-                            className="object-cover hover:scale-105 transition-transform duration-300"
-                            unoptimized
-                        />
-                    </div>
+                        src={image.url}
+                        alt={`Gallery photo ${index + 4}`}
+                    />
                 ))}
 
                 {/* View All Card */}

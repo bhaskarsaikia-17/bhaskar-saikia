@@ -17,6 +17,34 @@ interface GalleryImage {
     lastModified: string;
 }
 
+// Individual gallery image with skeleton loading
+function GalleryImageItem({ image, index, onClick }: { image: GalleryImage; index: number; onClick: () => void }) {
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    return (
+        <div
+            className="rounded-xl overflow-hidden bg-muted cursor-pointer group relative"
+            style={{ aspectRatio: '1/1' }}
+            onClick={onClick}
+        >
+            {/* Skeleton */}
+            {!imageLoaded && (
+                <div className="absolute inset-0 bg-muted animate-pulse" />
+            )}
+            <Image
+                src={image.url}
+                alt={`Gallery photo ${index + 1}`}
+                fill
+                sizes="(max-width: 768px) 50vw, 20vw"
+                className={`object-cover group-hover:scale-110 transition-all duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                loading={index < 10 ? "eager" : "lazy"}
+                unoptimized
+                onLoad={() => setImageLoaded(true)}
+            />
+        </div>
+    );
+}
+
 export function GalleryClient() {
     const [images, setImages] = useState<GalleryImage[]>([]);
     const [loading, setLoading] = useState(true);
@@ -288,22 +316,12 @@ export function GalleryClient() {
                                     }}
                                 >
                                     {images.map((image, index) => (
-                                        <div
+                                        <GalleryImageItem
                                             key={index}
-                                            className="rounded-xl overflow-hidden bg-muted cursor-pointer group relative"
-                                            style={{ aspectRatio: '1/1' }}
+                                            image={image}
+                                            index={index}
                                             onClick={() => openLightbox(index)}
-                                        >
-                                            <Image
-                                                src={image.url}
-                                                alt={`Gallery photo ${index + 1}`}
-                                                fill
-                                                sizes="(max-width: 768px) 50vw, 20vw"
-                                                className="object-cover group-hover:scale-110 transition-transform duration-300"
-                                                loading={index < 10 ? "eager" : "lazy"}
-                                                unoptimized
-                                            />
-                                        </div>
+                                        />
                                     ))}
                                 </div>
                             )}

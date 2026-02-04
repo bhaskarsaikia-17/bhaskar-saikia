@@ -2,6 +2,7 @@
 
 import type { LanyardData } from "react-use-lanyard";
 import Image from "next/image";
+import { useState } from "react";
 import { formatDuration } from "./discord-activity";
 
 const statusTextMap = {
@@ -27,6 +28,7 @@ const statusTextColorMap = {
 
 export function SpotifyActivity({ activity }: { activity: LanyardData }) {
     const spotify = activity.spotify;
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     if (!spotify) {
         return null;
@@ -40,12 +42,17 @@ export function SpotifyActivity({ activity }: { activity: LanyardData }) {
         <div className="flex items-center gap-3">
             {spotify.album_art_url && (
                 <div className="relative shrink-0" style={{ width: '48px', height: '48px' }}>
+                    {/* Skeleton */}
+                    {!imageLoaded && (
+                        <div className="absolute inset-0 rounded-md bg-muted animate-pulse" />
+                    )}
                     <Image
                         src={spotify.album_art_url}
                         alt={spotify.album}
                         fill
                         sizes="48px"
-                        className="rounded-md object-cover"
+                        className={`rounded-md object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                        onLoad={() => setImageLoaded(true)}
                     />
                 </div>
             )}
