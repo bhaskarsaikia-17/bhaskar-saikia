@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
+import Script from "next/script";
 import localFont from "next/font/local";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -82,6 +83,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <Script
+        defer
+        src="https://stats.nynx.one/script.js"
+        data-website-id="9ec49469-bfb7-492e-9bcc-30131f57f552"
+        strategy="afterInteractive"
+      />
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased relative",
