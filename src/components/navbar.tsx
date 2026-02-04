@@ -39,6 +39,7 @@ export default function Navbar() {
             </Tooltip>
           );
         })}
+        <Separator orientation="vertical" className="h-9 mx-1" />
         <Tooltip>
           <TooltipTrigger asChild>
             <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
