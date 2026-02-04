@@ -2,7 +2,7 @@
 
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { ArrowLeft, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, X, ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
@@ -111,6 +111,80 @@ export function GalleryClient() {
 
     // Lightbox Modal Component - rendered via Portal
     const LightboxModal = () => {
+        const [zoomLevel, setZoomLevel] = useState(1);
+        const [position, setPosition] = useState({ x: 0, y: 0 });
+        const [isDragging, setIsDragging] = useState(false);
+        const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+
+        // Reset zoom when image changes
+        useEffect(() => {
+            setZoomLevel(1);
+            setPosition({ x: 0, y: 0 });
+        }, [selectedIndex]);
+
+        const handleZoomIn = (e: React.MouseEvent) => {
+            e.stopPropagation();
+            setZoomLevel(prev => Math.min(prev + 0.5, 3));
+        };
+
+        const handleZoomOut = (e: React.MouseEvent) => {
+            e.stopPropagation();
+            setZoomLevel(prev => {
+                const newZoom = Math.max(prev - 0.5, 1);
+                if (newZoom === 1) {
+                    setPosition({ x: 0, y: 0 });
+                }
+                return newZoom;
+            });
+        };
+
+        const handleWheel = (e: React.WheelEvent) => {
+            e.stopPropagation();
+            if (e.deltaY < 0) {
+                setZoomLevel(prev => Math.min(prev + 0.25, 3));
+            } else {
+                setZoomLevel(prev => {
+                    const newZoom = Math.max(prev - 0.25, 1);
+                    if (newZoom === 1) {
+                        setPosition({ x: 0, y: 0 });
+                    }
+                    return newZoom;
+                });
+            }
+        };
+
+        const handleDoubleClick = (e: React.MouseEvent) => {
+            e.stopPropagation();
+            if (zoomLevel > 1) {
+                setZoomLevel(1);
+                setPosition({ x: 0, y: 0 });
+            } else {
+                setZoomLevel(2);
+            }
+        };
+
+        const handleMouseDown = (e: React.MouseEvent) => {
+            if (zoomLevel > 1) {
+                e.stopPropagation();
+                setIsDragging(true);
+                setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
+            }
+        };
+
+        const handleMouseMove = (e: React.MouseEvent) => {
+            if (isDragging && zoomLevel > 1) {
+                e.stopPropagation();
+                setPosition({
+                    x: e.clientX - dragStart.x,
+                    y: e.clientY - dragStart.y
+                });
+            }
+        };
+
+        const handleMouseUp = () => {
+            setIsDragging(false);
+        };
+
         if (selectedIndex === null) return null;
 
         return createPortal(
@@ -118,6 +192,8 @@ export function GalleryClient() {
                 className="fixed inset-0 flex items-center justify-center"
                 style={{ zIndex: 9999 }}
                 onClick={closeLightbox}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseUp}
             >
                 {/* Semi-transparent overlay with blur - allows gallery to show through blurred */}
                 <div
@@ -146,6 +222,61 @@ export function GalleryClient() {
                 >
                     <X className="size-6 text-white" />
                 </button>
+
+                {/* Zoom Controls */}
+                <div
+                    style={{
+                        position: 'absolute',
+                        top: '1rem',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        display: 'flex',
+                        gap: '0.5rem',
+                        zIndex: 10001
+                    }}
+                >
+                    <button
+                        onClick={handleZoomOut}
+                        disabled={zoomLevel <= 1}
+                        style={{
+                            padding: '0.5rem',
+                            borderRadius: '9999px',
+                            backgroundColor: zoomLevel <= 1 ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.1)',
+                            cursor: zoomLevel <= 1 ? 'not-allowed' : 'pointer',
+                            border: 'none',
+                            opacity: zoomLevel <= 1 ? 0.5 : 1
+                        }}
+                    >
+                        <ZoomOut className="size-5 text-white" />
+                    </button>
+                    <div
+                        style={{
+                            padding: '0.5rem 1rem',
+                            borderRadius: '9999px',
+                            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                            color: 'white',
+                            fontSize: '0.875rem',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        {Math.round(zoomLevel * 100)}%
+                    </div>
+                    <button
+                        onClick={handleZoomIn}
+                        disabled={zoomLevel >= 3}
+                        style={{
+                            padding: '0.5rem',
+                            borderRadius: '9999px',
+                            backgroundColor: zoomLevel >= 3 ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.1)',
+                            cursor: zoomLevel >= 3 ? 'not-allowed' : 'pointer',
+                            border: 'none',
+                            opacity: zoomLevel >= 3 ? 0.5 : 1
+                        }}
+                    >
+                        <ZoomIn className="size-5 text-white" />
+                    </button>
+                </div>
 
                 {/* Previous Button */}
                 <button
@@ -203,22 +334,43 @@ export function GalleryClient() {
                         maxHeight: '80vh',
                         position: 'relative',
                         width: '100%',
-                        height: '75vh'
+                        height: '75vh',
                     }}
                     onClick={(e) => e.stopPropagation()}
+                    onWheel={handleWheel}
+                    onDoubleClick={handleDoubleClick}
+                    onMouseDown={handleMouseDown}
+                    onMouseMove={handleMouseMove}
+                    onMouseUp={handleMouseUp}
                 >
-                    <Image
-                        src={images[selectedIndex].url}
-                        alt={`Gallery photo ${selectedIndex + 1}`}
-                        fill
-                        sizes="80vw"
-                        className="object-contain"
+                    {/* Inner wrapper to clip the image with rounded corners */}
+                    <div
                         style={{
-                            borderRadius: '12px',
+                            overflow: 'hidden',
+                            borderRadius: '20px',
+                            maxWidth: '100%',
+                            maxHeight: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
                         }}
-                        priority
-                        unoptimized
-                    />
+                    >
+                        <img
+                            src={images[selectedIndex].url}
+                            alt={`Gallery photo ${selectedIndex + 1}`}
+                            style={{
+                                maxWidth: '100%',
+                                maxHeight: '70vh',
+                                objectFit: 'contain',
+                                borderRadius: '20px',
+                                transform: `scale(${zoomLevel}) translate(${position.x / zoomLevel}px, ${position.y / zoomLevel}px)`,
+                                transition: isDragging ? 'none' : 'transform 0.2s ease-out',
+                                cursor: zoomLevel > 1 ? (isDragging ? 'grabbing' : 'grab') : 'zoom-in',
+                                userSelect: 'none'
+                            }}
+                            draggable={false}
+                        />
+                    </div>
 
                     {/* Image Counter */}
                     <div
