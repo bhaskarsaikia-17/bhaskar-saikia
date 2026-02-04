@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import Image from "next/image";
 
 interface GalleryProps {
     images: string[];
@@ -41,13 +42,14 @@ export function Gallery({ images, className }: GalleryProps) {
                 {displayImages.slice(0, 3).map((src, index) => (
                     <div
                         key={index}
-                        className="aspect-square rounded-xl overflow-hidden bg-muted"
+                        className="aspect-square rounded-xl overflow-hidden bg-muted relative"
                     >
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
+                        <Image
                             src={src}
                             alt={`Gallery photo ${index + 1}`}
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            fill
+                            sizes="(max-width: 640px) 50vw, 200px"
+                            className="object-cover hover:scale-105 transition-transform duration-300"
                         />
                     </div>
                 ))}
@@ -56,13 +58,14 @@ export function Gallery({ images, className }: GalleryProps) {
                 {displayImages.slice(3, 5).map((src, index) => (
                     <div
                         key={index + 3}
-                        className="aspect-square rounded-xl overflow-hidden bg-muted"
+                        className="aspect-square rounded-xl overflow-hidden bg-muted relative"
                     >
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
+                        <Image
                             src={src}
                             alt={`Gallery photo ${index + 4}`}
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            fill
+                            sizes="(max-width: 640px) 50vw, 200px"
+                            className="object-cover hover:scale-105 transition-transform duration-300"
                         />
                     </div>
                 ))}

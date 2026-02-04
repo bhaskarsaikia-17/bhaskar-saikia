@@ -286,6 +286,8 @@ export const DATA = {
       href: "https://droplight.in",
       dates: "Feb 2026 - Present",
       active: true,
+      showOnHomePage: true,
+      showOnProjectsPage: true,
       description:
         "A stunning, modern landing page designed to captivate visitors with seamless animations, beautiful UI components, and a premium design aesthetic. Built with cutting-edge technologies for optimal performance and visual impact.",
       technologies: [
@@ -314,6 +316,8 @@ export const DATA = {
       href: "https://mail.nynx.in",
       dates: "Dec 2025 - Present",
       active: true,
+      showOnHomePage: true,
+      showOnProjectsPage: true,
       description:
         "Nynx Temp Mail - Advanced free instant private emails. Protect your privacy with disposable temporary email addresses that expire in 24 hours.",
       technologies: [
@@ -343,6 +347,8 @@ export const DATA = {
       href: "https://flex.nynx.in",
       dates: "Dec 2025 - Present",
       active: true,
+      showOnHomePage: false,
+      showOnProjectsPage: true,
       description:
         "Flex is a free file sharing platform, Upload files securely and generate shareable links. No signup required. Fast, private.",
       technologies: [
@@ -371,6 +377,8 @@ export const DATA = {
       href: "https://tools.nynx.in",
       dates: "Dec 2024 - Present",
       active: true,
+      showOnHomePage: true,
+      showOnProjectsPage: true,
       description:
         "Web Based 14+ free online developer tools: CC generator, fake identity, IP lookup, DNS lookup, WHOIS, password generator, QR code, JSON formatter, and more.",
       technologies: [
@@ -395,6 +403,8 @@ export const DATA = {
       href: "https://licenium.bhaskar.pro",
       dates: "Jan 2026 - Present",
       active: true,
+      showOnHomePage: true,
+      showOnProjectsPage: true,
       description:
         "A full stack software license management dashboard with apps, licenses, analytics, audit logs features.",
       technologies: [

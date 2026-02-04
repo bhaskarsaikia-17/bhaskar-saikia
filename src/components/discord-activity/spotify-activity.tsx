@@ -1,6 +1,7 @@
 "use client";
 
 import type { LanyardData } from "react-use-lanyard";
+import Image from "next/image";
 import { formatDuration } from "./discord-activity";
 
 const statusTextMap = {
@@ -38,12 +39,15 @@ export function SpotifyActivity({ activity }: { activity: LanyardData }) {
     return (
         <div className="flex items-center gap-3">
             {spotify.album_art_url && (
-                <img
-                    src={spotify.album_art_url}
-                    alt={spotify.album}
-                    className="rounded-md object-cover shrink-0"
-                    style={{ width: '48px', height: '48px' }}
-                />
+                <div className="relative shrink-0" style={{ width: '48px', height: '48px' }}>
+                    <Image
+                        src={spotify.album_art_url}
+                        alt={spotify.album}
+                        fill
+                        sizes="48px"
+                        className="rounded-md object-cover"
+                    />
+                </div>
             )}
             <div className="flex flex-col flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-2">

@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
-import ContactSection from "@/components/section/contact-section";
+import SocialSection from "@/components/section/contact-section";
 import HackathonsSection from "@/components/section/hackathons-section";
 import ProjectsSection from "@/components/section/projects-section";
 import WorkSection from "@/components/section/work-section";
@@ -45,7 +45,7 @@ export default function Page() {
       <section id="about">
         <div className="flex min-h-0 flex-col gap-y-4">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <h2 className="text-xl font-bold">About</h2>
+            <h2 className="text-xl font-newsreader italic">About</h2>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
             <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
@@ -121,7 +121,7 @@ export default function Page() {
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="text-xl font-bold">Skills & Tools</h2>
+            <h2 className="text-xl font-newsreader italic">Skills & Tools</h2>
           </BlurFade>
           <div className="flex flex-col gap-3">
             {Object.entries(DATA.skills).map(([key, category], categoryIndex) => (
@@ -160,9 +160,9 @@ export default function Page() {
         </BlurFade>
       </section>
       */}
-      <section id="contact">
+      <section id="socials">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
-          <ContactSection />
+          <SocialSection />
         </BlurFade>
       </section>
     </main>

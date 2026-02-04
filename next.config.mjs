@@ -3,6 +3,15 @@ import { withContentCollections } from "@content-collections/next";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'i.scdn.co' }, // Spotify
+      { protocol: 'https', hostname: 'cdn.discordapp.com' }, // Discord
+      { protocol: 'https', hostname: 'lastfm.freetls.fastly.net' }, // Last.fm
+      { protocol: 'https', hostname: 'i.postimg.cc' }, // Postimg fallback
+      { protocol: 'https', hostname: '**.githubusercontent.com' }, // GitHub
+    ],
+  },
   async headers() {
     return [
       {

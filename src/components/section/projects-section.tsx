@@ -32,26 +32,40 @@ export default function ProjectsSection() {
                     </div>
                 </div>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto auto-rows-fr">
-                    {DATA.projects.map((project, id) => (
-                        <BlurFade
-                            key={project.title}
-                            delay={BLUR_FADE_DELAY * 12 + id * 0.05}
-                            className="h-full"
-                        >
-                            <ProjectCard
-                                href={project.href}
+                    {DATA.projects
+                        .filter((project) => project.showOnHomePage !== false)
+                        .map((project, id) => (
+                            <BlurFade
                                 key={project.title}
-                                title={project.title}
-                                description={project.description}
-                                dates={project.dates}
-                                tags={project.technologies}
-                                image={project.image}
-                                video={project.video}
-                                links={project.links}
-                            />
-                        </BlurFade>
-                    ))}
+                                delay={BLUR_FADE_DELAY * 12 + id * 0.05}
+                                className="h-full"
+                            >
+                                <ProjectCard
+                                    href={project.href}
+                                    key={project.title}
+                                    title={project.title}
+                                    description={project.description}
+                                    dates={project.dates}
+                                    tags={project.technologies}
+                                    image={project.image}
+                                    video={project.video}
+                                    links={project.links}
+                                />
+                            </BlurFade>
+                        ))}
                 </div>
+                <BlurFade delay={BLUR_FADE_DELAY * 14} className="flex justify-center mt-4">
+                    <a
+                        href="/projects"
+                        className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                        View all projects
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-4 transition-transform group-hover:translate-x-1">
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+                    </a>
+                </BlurFade>
             </div>
         </section>
     );

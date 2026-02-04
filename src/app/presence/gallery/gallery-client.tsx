@@ -4,6 +4,7 @@ import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ArrowLeft, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 
@@ -152,21 +153,23 @@ export function GalleryClient({ images }: GalleryClientProps) {
                         justifyContent: 'center',
                         padding: '2rem',
                         maxWidth: '80vw',
-                        maxHeight: '80vh'
+                        maxHeight: '80vh',
+                        position: 'relative',
+                        width: '100%',
+                        height: '75vh'
                     }}
                     onClick={(e) => e.stopPropagation()}
                 >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                         src={images[selectedIndex]}
                         alt={`Gallery photo ${selectedIndex + 1}`}
+                        fill
+                        sizes="80vw"
+                        className="object-contain"
                         style={{
-                            maxWidth: '100%',
-                            maxHeight: '75vh',
-                            objectFit: 'contain',
                             borderRadius: '12px',
-                            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
                         }}
+                        priority
                     />
 
                     {/* Image Counter */}
@@ -250,15 +253,17 @@ export function GalleryClient({ images }: GalleryClientProps) {
                                 {images.map((src, index) => (
                                     <div
                                         key={index}
-                                        className="rounded-xl overflow-hidden bg-muted cursor-pointer group"
+                                        className="rounded-xl overflow-hidden bg-muted cursor-pointer group relative"
                                         style={{ aspectRatio: '1/1' }}
                                         onClick={() => openLightbox(index)}
                                     >
-                                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                                        <img
+                                        <Image
                                             src={src}
                                             alt={`Gallery photo ${index + 1}`}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                            fill
+                                            sizes="(max-width: 768px) 50vw, 20vw"
+                                            className="object-cover group-hover:scale-110 transition-transform duration-300"
+                                            loading={index < 10 ? "eager" : "lazy"}
                                         />
                                     </div>
                                 ))}
@@ -281,4 +286,3 @@ export function GalleryClient({ images }: GalleryClientProps) {
         </>
     );
 }
-

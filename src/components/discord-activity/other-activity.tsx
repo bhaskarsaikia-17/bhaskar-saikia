@@ -1,8 +1,10 @@
 "use client";
 
 import type { Activity } from "react-use-lanyard";
+import Image from "next/image";
 import { timestampToRelativeTime, trimToLength } from "../../util";
 import { Clock } from "lucide-react";
+import { useState } from "react";
 
 const statusTextMap = {
     online: "Online",
@@ -33,6 +35,8 @@ interface OtherActivityProps {
 }
 
 export function OtherActivity({ activity, discordStatus }: OtherActivityProps) {
+    const [imageError, setImageError] = useState(false);
+
     const getImageUrl = (imageUrl: string | undefined) => {
         if (!imageUrl) {
             return "https://i.postimg.cc/bNVjsFTQ/avatar.png";
@@ -61,22 +65,33 @@ export function OtherActivity({ activity, discordStatus }: OtherActivityProps) {
 
     const largeImage = getImageUrl(activity.assets?.large_image);
 
+    // For external URLs that aren't in remotePatterns, fall back to img tag
+    const isExternalUrl = largeImage.startsWith('http') &&
+        !largeImage.includes('cdn.discordapp.com') &&
+        !largeImage.includes('i.postimg.cc');
+
     return (
         <div className="flex items-center gap-3">
-            <img
-                src={largeImage}
-                alt={activity.name || "Activity status"}
-                className="rounded-md object-cover shrink-0"
-                style={{ width: '48px', height: '48px' }}
-                onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    if (target.src.includes('/app-assets/') && activity.application_id && activity.assets?.large_image) {
-                        target.src = `https://cdn.discordapp.com/app-icons/${activity.application_id}/${activity.assets.large_image}.png`;
-                    } else {
-                        target.src = "https://i.postimg.cc/bNVjsFTQ/avatar.png";
-                    }
-                }}
-            />
+            <div className="relative shrink-0" style={{ width: '48px', height: '48px' }}>
+                {isExternalUrl || imageError ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                        src={imageError ? "https://i.postimg.cc/bNVjsFTQ/avatar.png" : largeImage}
+                        alt={activity.name || "Activity status"}
+                        className="rounded-md object-cover w-full h-full"
+                        onError={() => setImageError(true)}
+                    />
+                ) : (
+                    <Image
+                        src={largeImage}
+                        alt={activity.name || "Activity status"}
+                        fill
+                        sizes="48px"
+                        className="rounded-md object-cover"
+                        onError={() => setImageError(true)}
+                    />
+                )}
+            </div>
             <div className="flex flex-col min-w-0 flex-1">
                 <div className="flex items-center justify-between gap-2">
                     <p className="text-sm font-medium truncate">{activity.name}</p>

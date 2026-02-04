@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function WorkflowSection() {
     return (
         <div className="flex min-h-0 flex-col gap-y-6">
-            <h2 className="text-xl font-bold">How I Work</h2>
+            <h2 className="text-xl font-newsreader italic">How I Work</h2>
             <div className="w-full overflow-x-auto">
                 <Image
                     src="/workflow.svg"

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { LastFmTrack, LastFmAlbum, LastFmArtist, getTrackImageUrl, getAlbumImageUrl, getArtistImageUrl } from "@/lib/lastfm";
 import { cn } from "@/lib/utils";
 import { Music, User } from "lucide-react";
@@ -92,19 +93,24 @@ export function MusicTabs({ topTracks, topAlbums, topArtists, recentTracks }: Mu
 // Track Item Component
 function TrackItem({ track, showPlays = true }: { track: LastFmTrack; showPlays?: boolean }) {
     const imageUrl = getTrackImageUrl(track, "large");
+    const [imageError, setImageError] = useState(false);
 
     return (
         <Link href={track.url} target="_blank" rel="noopener noreferrer">
             <div className="group rounded-xl border bg-card/50 hover:bg-card transition-colors p-3 flex items-center gap-3 cursor-pointer h-full">
                 {/* Album Art */}
                 <div className="shrink-0">
-                    {imageUrl ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                            src={imageUrl}
-                            alt={`${track.name} album art`}
-                            className="size-14 rounded-lg object-cover"
-                        />
+                    {imageUrl && !imageError ? (
+                        <div className="size-14 relative rounded-lg overflow-hidden">
+                            <Image
+                                src={imageUrl}
+                                alt={`${track.name} album art`}
+                                fill
+                                sizes="56px"
+                                className="object-cover"
+                                onError={() => setImageError(true)}
+                            />
+                        </div>
                     ) : (
                         <div className="size-14 rounded-lg bg-muted flex items-center justify-center">
                             <Music className="size-6 text-muted-foreground" />
@@ -132,19 +138,24 @@ function TrackItem({ track, showPlays = true }: { track: LastFmTrack; showPlays?
 // Album Item Component
 function AlbumItem({ album }: { album: LastFmAlbum }) {
     const imageUrl = getAlbumImageUrl(album, "large");
+    const [imageError, setImageError] = useState(false);
 
     return (
         <Link href={album.url} target="_blank" rel="noopener noreferrer">
             <div className="group rounded-xl border bg-card/50 hover:bg-card transition-colors p-3 flex items-center gap-3 cursor-pointer h-full">
                 {/* Album Art */}
                 <div className="shrink-0">
-                    {imageUrl ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                            src={imageUrl}
-                            alt={`${album.name} album art`}
-                            className="size-14 rounded-lg object-cover"
-                        />
+                    {imageUrl && !imageError ? (
+                        <div className="size-14 relative rounded-lg overflow-hidden">
+                            <Image
+                                src={imageUrl}
+                                alt={`${album.name} album art`}
+                                fill
+                                sizes="56px"
+                                className="object-cover"
+                                onError={() => setImageError(true)}
+                            />
+                        </div>
                     ) : (
                         <div className="size-14 rounded-lg bg-muted flex items-center justify-center">
                             <Music className="size-6 text-muted-foreground" />
@@ -172,19 +183,24 @@ function AlbumItem({ album }: { album: LastFmAlbum }) {
 // Artist Item Component
 function ArtistItem({ artist }: { artist: LastFmArtist }) {
     const imageUrl = getArtistImageUrl(artist, "large");
+    const [imageError, setImageError] = useState(false);
 
     return (
         <Link href={artist.url} target="_blank" rel="noopener noreferrer">
             <div className="group rounded-xl border bg-card/50 hover:bg-card transition-colors p-3 flex items-center gap-3 cursor-pointer h-full">
                 {/* Artist Image */}
                 <div className="shrink-0">
-                    {imageUrl ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                            src={imageUrl}
-                            alt={`${artist.name}`}
-                            className="size-14 rounded-full object-cover"
-                        />
+                    {imageUrl && !imageError ? (
+                        <div className="size-14 relative rounded-full overflow-hidden">
+                            <Image
+                                src={imageUrl}
+                                alt={`${artist.name}`}
+                                fill
+                                sizes="56px"
+                                className="object-cover"
+                                onError={() => setImageError(true)}
+                            />
+                        </div>
                     ) : (
                         <div className="size-14 rounded-full bg-muted flex items-center justify-center">
                             <User className="size-6 text-muted-foreground" />
