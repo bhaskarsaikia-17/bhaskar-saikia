@@ -49,9 +49,9 @@ export function SpotifyActivity({ activity }: { activity: LanyardData }) {
                     />
                 </div>
             )}
-            <div className="flex flex-col flex-1 min-w-0">
+            <div className="flex flex-col flex-1 min-w-0 overflow-hidden">
                 <div className="flex items-center justify-between gap-2">
-                    <p className="text-sm font-medium truncate">
+                    <p className="text-sm font-medium truncate flex-1 min-w-0">
                         {spotify.song}
                     </p>
                     {/* Online Status - right aligned */}
@@ -61,7 +61,7 @@ export function SpotifyActivity({ activity }: { activity: LanyardData }) {
                             style={{ backgroundColor: statusDotColorMap[activity.discord_status] }}
                         />
                         <span
-                            className="text-xs font-medium"
+                            className="text-xs font-medium whitespace-nowrap"
                             style={{ color: statusTextColorMap[activity.discord_status] }}
                         >
                             {statusTextMap[activity.discord_status]}

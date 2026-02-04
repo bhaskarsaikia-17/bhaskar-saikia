@@ -10,6 +10,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'lastfm.freetls.fastly.net' }, // Last.fm
       { protocol: 'https', hostname: 'i.postimg.cc' }, // Postimg fallback
       { protocol: 'https', hostname: '**.githubusercontent.com' }, // GitHub
+      { protocol: 'https', hostname: 'pub-bc8ac1fbdd9845d5816f234209228487.r2.dev' }, // Cloudflare R2
     ],
   },
   async headers() {

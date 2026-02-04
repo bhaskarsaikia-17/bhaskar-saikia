@@ -10,16 +10,35 @@ import { createPortal } from "react-dom";
 
 const BLUR_FADE_DELAY = 0.04;
 
-interface GalleryClientProps {
-    images: string[];
+interface GalleryImage {
+    url: string;
+    key: string;
+    size: number;
+    lastModified: string;
 }
 
-export function GalleryClient({ images }: GalleryClientProps) {
+export function GalleryClient() {
+    const [images, setImages] = useState<GalleryImage[]>([]);
+    const [loading, setLoading] = useState(true);
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         setMounted(true);
+        async function fetchImages() {
+            try {
+                const response = await fetch("/api/v1/gallery");
+                if (response.ok) {
+                    const data = await response.json();
+                    setImages(data);
+                }
+            } catch (error) {
+                console.error("Failed to fetch gallery images:", error);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchImages();
     }, []);
 
     const openLightbox = (index: number) => {
@@ -161,7 +180,7 @@ export function GalleryClient({ images }: GalleryClientProps) {
                     onClick={(e) => e.stopPropagation()}
                 >
                     <Image
-                        src={images[selectedIndex]}
+                        src={images[selectedIndex].url}
                         alt={`Gallery photo ${selectedIndex + 1}`}
                         fill
                         sizes="80vw"
@@ -170,6 +189,7 @@ export function GalleryClient({ images }: GalleryClientProps) {
                             borderRadius: '12px',
                         }}
                         priority
+                        unoptimized
                     />
 
                     {/* Image Counter */}
@@ -243,35 +263,54 @@ export function GalleryClient({ images }: GalleryClientProps) {
                 >
                     <BlurFade delay={BLUR_FADE_DELAY * 4}>
                         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-                            <div
-                                style={{
-                                    display: 'grid',
-                                    gridTemplateColumns: 'repeat(5, 1fr)',
-                                    gap: '0.5rem'
-                                }}
-                            >
-                                {images.map((src, index) => (
-                                    <div
-                                        key={index}
-                                        className="rounded-xl overflow-hidden bg-muted cursor-pointer group relative"
-                                        style={{ aspectRatio: '1/1' }}
-                                        onClick={() => openLightbox(index)}
-                                    >
-                                        <Image
-                                            src={src}
-                                            alt={`Gallery photo ${index + 1}`}
-                                            fill
-                                            sizes="(max-width: 768px) 50vw, 20vw"
-                                            className="object-cover group-hover:scale-110 transition-transform duration-300"
-                                            loading={index < 10 ? "eager" : "lazy"}
+                            {loading ? (
+                                <div
+                                    style={{
+                                        display: 'grid',
+                                        gridTemplateColumns: 'repeat(5, 1fr)',
+                                        gap: '0.5rem'
+                                    }}
+                                >
+                                    {[...Array(10)].map((_, i) => (
+                                        <div
+                                            key={i}
+                                            className="rounded-xl bg-muted animate-pulse"
+                                            style={{ aspectRatio: '1/1' }}
                                         />
-                                    </div>
-                                ))}
-                            </div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <div
+                                    style={{
+                                        display: 'grid',
+                                        gridTemplateColumns: 'repeat(5, 1fr)',
+                                        gap: '0.5rem'
+                                    }}
+                                >
+                                    {images.map((image, index) => (
+                                        <div
+                                            key={index}
+                                            className="rounded-xl overflow-hidden bg-muted cursor-pointer group relative"
+                                            style={{ aspectRatio: '1/1' }}
+                                            onClick={() => openLightbox(index)}
+                                        >
+                                            <Image
+                                                src={image.url}
+                                                alt={`Gallery photo ${index + 1}`}
+                                                fill
+                                                sizes="(max-width: 768px) 50vw, 20vw"
+                                                className="object-cover group-hover:scale-110 transition-transform duration-300"
+                                                loading={index < 10 ? "eager" : "lazy"}
+                                                unoptimized
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </BlurFade>
 
-                    {images.length === 0 && (
+                    {!loading && images.length === 0 && (
                         <BlurFade delay={BLUR_FADE_DELAY * 5}>
                             <div className="text-center py-12">
                                 <p className="text-muted-foreground">No photos yet</p>

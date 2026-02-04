@@ -2,8 +2,6 @@ import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { DiscordActivity } from "@/components/discord-activity/discord-activity";
 import { Gallery } from "@/components/presence/gallery";
-import fs from "fs";
-import path from "path";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -12,29 +10,7 @@ export const metadata = {
     description: "What I'm listening to and where I've been",
 };
 
-// Get gallery images from the public/gallery folder
-function getGalleryImages(): string[] {
-    const galleryPath = path.join(process.cwd(), "public", "gallery");
-
-    try {
-        const files = fs.readdirSync(galleryPath);
-        const imageExtensions = [".jpg", ".jpeg", ".png", ".webp", ".gif"];
-
-        return files
-            .filter((file) => {
-                const ext = path.extname(file).toLowerCase();
-                return imageExtensions.includes(ext);
-            })
-            .map((file) => `/gallery/${file}`);
-    } catch {
-        console.error("Could not read gallery folder");
-        return [];
-    }
-}
-
 export default function PresencePage() {
-    const galleryImages = getGalleryImages();
-
     return (
         <main className="min-h-dvh flex flex-col gap-14 relative">
             {/* Header */}
@@ -72,7 +48,7 @@ export default function PresencePage() {
             <section id="gallery">
                 <div className="mx-auto w-full max-w-2xl">
                     <BlurFade delay={BLUR_FADE_DELAY * 4}>
-                        <Gallery images={galleryImages} />
+                        <Gallery />
                     </BlurFade>
                 </div>
             </section>

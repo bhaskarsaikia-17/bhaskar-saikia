@@ -3,13 +3,58 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
+import { useState, useEffect } from "react";
+
+interface GalleryImage {
+    url: string;
+    key: string;
+    size: number;
+    lastModified: string;
+}
 
 interface GalleryProps {
-    images: string[];
     className?: string;
 }
 
-export function Gallery({ images, className }: GalleryProps) {
+export function Gallery({ className }: GalleryProps) {
+    const [images, setImages] = useState<GalleryImage[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchImages() {
+            try {
+                const response = await fetch("/api/v1/gallery");
+                if (response.ok) {
+                    const data = await response.json();
+                    setImages(data);
+                }
+            } catch (error) {
+                console.error("Failed to fetch gallery images:", error);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchImages();
+    }, []);
+
+    if (loading) {
+        return (
+            <div className={cn("space-y-3", className)}>
+                <p className="font-newsreader italic text-sm text-muted-foreground">
+                    the gallery
+                </p>
+                <div className="w-full grid grid-cols-3 gap-2">
+                    {[...Array(6)].map((_, i) => (
+                        <div
+                            key={i}
+                            className="aspect-square rounded-xl bg-muted animate-pulse"
+                        />
+                    ))}
+                </div>
+            </div>
+        );
+    }
+
     if (images.length === 0) {
         return (
             <div className={cn("space-y-3", className)}>
@@ -39,33 +84,35 @@ export function Gallery({ images, className }: GalleryProps) {
                 style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '0.5rem' }}
             >
                 {/* Row 1 */}
-                {displayImages.slice(0, 3).map((src, index) => (
+                {displayImages.slice(0, 3).map((image, index) => (
                     <div
                         key={index}
                         className="aspect-square rounded-xl overflow-hidden bg-muted relative"
                     >
                         <Image
-                            src={src}
+                            src={image.url}
                             alt={`Gallery photo ${index + 1}`}
                             fill
                             sizes="(max-width: 640px) 50vw, 200px"
                             className="object-cover hover:scale-105 transition-transform duration-300"
+                            unoptimized
                         />
                     </div>
                 ))}
 
                 {/* Row 2 */}
-                {displayImages.slice(3, 5).map((src, index) => (
+                {displayImages.slice(3, 5).map((image, index) => (
                     <div
                         key={index + 3}
                         className="aspect-square rounded-xl overflow-hidden bg-muted relative"
                     >
                         <Image
-                            src={src}
+                            src={image.url}
                             alt={`Gallery photo ${index + 4}`}
                             fill
                             sizes="(max-width: 640px) 50vw, 200px"
                             className="object-cover hover:scale-105 transition-transform duration-300"
+                            unoptimized
                         />
                     </div>
                 ))}

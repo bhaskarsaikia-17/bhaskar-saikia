@@ -34,12 +34,18 @@ interface OtherActivityProps {
     discordStatus?: DiscordStatus;
 }
 
+const APP_FALLBACK_ICONS: Record<string, string> = {
+    "Visual Studio Code": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png",
+    "Code": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png",
+};
+
 export function OtherActivity({ activity, discordStatus }: OtherActivityProps) {
     const [imageError, setImageError] = useState(false);
 
     const getImageUrl = (imageUrl: string | undefined) => {
         if (!imageUrl) {
-            return "https://i.postimg.cc/bNVjsFTQ/avatar.png";
+            // Use app-specific fallback if available
+            return APP_FALLBACK_ICONS[activity.name] || "https://i.postimg.cc/bNVjsFTQ/avatar.png";
         }
 
         if (imageUrl.startsWith('mp:external/')) {
@@ -63,6 +69,11 @@ export function OtherActivity({ activity, discordStatus }: OtherActivityProps) {
         return imageUrl;
     };
 
+    // Get fallback for when Discord CDN fails
+    const getFallbackUrl = () => {
+        return APP_FALLBACK_ICONS[activity.name] || "https://i.postimg.cc/bNVjsFTQ/avatar.png";
+    };
+
     const largeImage = getImageUrl(activity.assets?.large_image);
 
     // For external URLs that aren't in remotePatterns, fall back to img tag
@@ -76,7 +87,7 @@ export function OtherActivity({ activity, discordStatus }: OtherActivityProps) {
                 {isExternalUrl || imageError ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
-                        src={imageError ? "https://i.postimg.cc/bNVjsFTQ/avatar.png" : largeImage}
+                        src={imageError ? getFallbackUrl() : largeImage}
                         alt={activity.name || "Activity status"}
                         className="rounded-md object-cover w-full h-full"
                         onError={() => setImageError(true)}

@@ -51,9 +51,13 @@ export function DiscordOnlineStatus() {
 }
 
 function LoadingIndicator() {
-    return <div className="animate-spin w-fit h-fit p-0 m-0 text-theme-foreground dark:text-white">
-        <LoaderCircle size={20} />
-    </div>
+    return (
+        <div className="flex items-center justify-center gap-1 h-6">
+            <span className="w-2 h-2 bg-theme-foreground dark:bg-white rounded-full animate-bounce [animation-delay:-0.3s]" />
+            <span className="w-2 h-2 bg-theme-foreground dark:bg-white rounded-full animate-bounce [animation-delay:-0.15s]" />
+            <span className="w-2 h-2 bg-theme-foreground dark:bg-white rounded-full animate-bounce" />
+        </div>
+    );
 }
 
 function ErrorIndicator() {
