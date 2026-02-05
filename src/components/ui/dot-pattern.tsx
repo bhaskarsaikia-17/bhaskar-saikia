@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useId, useRef, useState } from "react"
+import React, { useEffect, useId, useMemo, useRef, useState } from "react"
 import { motion } from "motion/react"
 
 import { cn } from "@/lib/utils"
@@ -61,6 +61,12 @@ interface DotPatternProps extends React.SVGProps<SVGSVGElement> {
  * - Dots color can be controlled via the text color utility classes
  */
 
+// Deterministic pseudo-random number generator based on seed
+function seededRandom(seed: number): number {
+  const x = Math.sin(seed * 9999) * 10000
+  return x - Math.floor(x)
+}
+
 export function DotPattern({
   width = 16,
   height = 16,
@@ -90,23 +96,25 @@ export function DotPattern({
     return () => window.removeEventListener("resize", updateDimensions)
   }, [])
 
-  const dots = Array.from(
-    {
-      length:
-        Math.ceil(dimensions.width / width) *
-        Math.ceil(dimensions.height / height),
-    },
-    (_, i) => {
-      const col = i % Math.ceil(dimensions.width / width)
-      const row = Math.floor(i / Math.ceil(dimensions.width / width))
+  // Use useMemo with deterministic random values based on dot position
+  const dots = useMemo(() => {
+    const cols = Math.ceil(dimensions.width / width)
+    const rows = Math.ceil(dimensions.height / height)
+    const totalDots = cols * rows
+
+    return Array.from({ length: totalDots }, (_, i) => {
+      const col = i % cols
+      const row = Math.floor(i / cols)
+      // Use deterministic seed based on position for consistent renders
+      const seed = col * 1000 + row
       return {
         x: col * width + cx,
         y: row * height + cy,
-        delay: Math.random() * 5,
-        duration: Math.random() * 3 + 2,
+        delay: seededRandom(seed) * 5,
+        duration: seededRandom(seed + 1) * 3 + 2,
       }
-    }
-  )
+    })
+  }, [dimensions.width, dimensions.height, width, height, cx, cy])
 
   return (
     <svg
@@ -135,20 +143,20 @@ export function DotPattern({
           animate={
             glow
               ? {
-                  opacity: [0.4, 1, 0.4],
-                  scale: [1, 1.5, 1],
-                }
+                opacity: [0.4, 1, 0.4],
+                scale: [1, 1.5, 1],
+              }
               : {}
           }
           transition={
             glow
               ? {
-                  duration: dot.duration,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  delay: dot.delay,
-                  ease: "easeInOut",
-                }
+                duration: dot.duration,
+                repeat: Infinity,
+                repeatType: "reverse",
+                delay: dot.delay,
+                ease: "easeInOut",
+              }
               : {}
           }
         />

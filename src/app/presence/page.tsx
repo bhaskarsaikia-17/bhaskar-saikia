@@ -1,6 +1,7 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { DiscordActivity } from "@/components/discord-activity/discord-activity";
+import { SpotifyCard } from "@/components/discord-activity/spotify-card";
 import { Gallery } from "@/components/presence/gallery";
 
 const BLUR_FADE_DELAY = 0.04;
@@ -30,10 +31,31 @@ export default function PresencePage() {
                 </div>
             </section>
 
+            {/* Spotify Playing Section */}
+            <section id="spotify-playing">
+                <div className="mx-auto w-full max-w-2xl space-y-2">
+                    <BlurFade delay={BLUR_FADE_DELAY * 3}>
+                        <p className="font-newsreader italic text-sm text-muted-foreground">
+                            now playing
+                        </p>
+                        <div className="w-full rounded-xl border bg-card/50 p-4 mt-2">
+                            <SpotifyCard />
+                        </div>
+                    </BlurFade>
+                </div>
+            </section>
+
+            {/* Separator */}
+            <div className="mx-auto w-full max-w-2xl">
+                <BlurFade delay={BLUR_FADE_DELAY * 4}>
+                    <div className="h-px bg-border" />
+                </BlurFade>
+            </div>
+
             {/* Discord Activity Section */}
             <section id="discord-activity">
                 <div className="mx-auto w-full max-w-2xl space-y-2">
-                    <BlurFade delay={BLUR_FADE_DELAY * 3}>
+                    <BlurFade delay={BLUR_FADE_DELAY * 5}>
                         <p className="font-newsreader italic text-sm text-muted-foreground">
                             discord activity
                         </p>
@@ -44,10 +66,17 @@ export default function PresencePage() {
                 </div>
             </section>
 
+            {/* Separator */}
+            <div className="mx-auto w-full max-w-2xl">
+                <BlurFade delay={BLUR_FADE_DELAY * 6}>
+                    <div className="h-px bg-border" />
+                </BlurFade>
+            </div>
+
             {/* Gallery Section */}
             <section id="gallery">
                 <div className="mx-auto w-full max-w-2xl">
-                    <BlurFade delay={BLUR_FADE_DELAY * 4}>
+                    <BlurFade delay={BLUR_FADE_DELAY * 7}>
                         <Gallery />
                     </BlurFade>
                 </div>

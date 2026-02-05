@@ -330,11 +330,11 @@ export function GalleryClient() {
                         alignItems: 'center',
                         justifyContent: 'center',
                         padding: '2rem',
-                        maxWidth: '80vw',
-                        maxHeight: '80vh',
+                        maxWidth: '90vw',
+                        maxHeight: '90vh',
                         position: 'relative',
                         width: '100%',
-                        height: '75vh',
+                        height: '85vh',
                     }}
                     onClick={(e) => e.stopPropagation()}
                     onWheel={handleWheel}
@@ -360,7 +360,7 @@ export function GalleryClient() {
                             alt={`Gallery photo ${selectedIndex + 1}`}
                             style={{
                                 maxWidth: '100%',
-                                maxHeight: '70vh',
+                                maxHeight: '85vh',
                                 objectFit: 'contain',
                                 borderRadius: '20px',
                                 transform: `scale(${zoomLevel}) translate(${position.x / zoomLevel}px, ${position.y / zoomLevel}px)`,
