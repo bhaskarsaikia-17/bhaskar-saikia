@@ -85,8 +85,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <Script
         defer
-        src="https://stats.nynx.one/script.js"
-        data-website-id="9ec49469-bfb7-492e-9bcc-30131f57f552"
+        src="https://analytics.bhaskarsaikia.in/script.js"
+        data-website-id="bd9ebfd0-0699-434a-802e-f065b44446bf"
         strategy="afterInteractive"
       />
       <body
