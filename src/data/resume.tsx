@@ -418,7 +418,7 @@ export const DATA = {
         },
       ],
       image: "",
-      video: "",
+      video: "https://pub-bc8ac1fbdd9845d5816f234209228487.r2.dev/lyrae.mp4",
     },
     {
       title: "Droplight",
