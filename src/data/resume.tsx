@@ -236,10 +236,10 @@ export const DATA = {
     ],
   },
   navbar: [
-    { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "/projects", icon: FolderKanban, label: "Projects" },
-    { href: "/presence", icon: Radio, label: "Presence" },
-    { href: "/blog", icon: NotebookIcon, label: "Blog" },
+    { href: "/", icon: HomeIcon, iconName: "HomeIcon", label: "Home" },
+    { href: "/projects", icon: FolderKanban, iconName: "FolderKanban", label: "Projects" },
+    { href: "/presence", icon: Radio, iconName: "Radio", label: "Presence" },
+    { href: "/blog", icon: NotebookIcon, iconName: "NotebookIcon", label: "Blog" },
   ],
   contact: {
     email: "hi@bhaskarsaikia.in",
@@ -392,6 +392,35 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Lyrae",
+      href: "https://lyrae.in",
+      dates: "Feb 2026 - Present",
+      active: true,
+      showOnHomePage: true,
+      showOnProjectsPage: true,
+      description:
+        "Lyrae helps you never miss a subscription renewal again. Track all your recurring payments in one simple place, get reminded before you're charged, and stay on top of your spending with smart email reminders and a unified dashboard.",
+      technologies: [
+        "React",
+        "Next.js",
+        "Typescript",
+        "TailwindCSS",
+        "Magic UI",
+        "Shadcn UI",
+        "Resend API",
+        "Vercel",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://lyrae.in",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "",
+    },
+    {
       title: "Droplight",
       href: "https://droplight.in",
       dates: "Feb 2026 - Present",
@@ -487,7 +516,7 @@ export const DATA = {
       href: "https://tools.nynx.in",
       dates: "Dec 2024 - Present",
       active: true,
-      showOnHomePage: true,
+      showOnHomePage: false,
       showOnProjectsPage: true,
       description:
         "Web Based 14+ free online developer tools: CC generator, fake identity, IP lookup, DNS lookup, WHOIS, password generator, QR code, JSON formatter, and more.",
