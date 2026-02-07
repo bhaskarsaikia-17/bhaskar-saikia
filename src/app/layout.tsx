@@ -86,7 +86,7 @@ export default function RootLayout({
       <Script
         defer
         src="https://analytics.bhaskarsaikia.in/script.js"
-        data-website-id="bd9ebfd0-0699-434a-802e-f065b44446bf"
+        data-website-id="f5b0e8e6-e121-478c-86e4-f820b8c96a90"
         strategy="afterInteractive"
       />
       <body
