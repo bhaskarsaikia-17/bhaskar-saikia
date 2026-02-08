@@ -22,8 +22,8 @@ const iconMap: Record<string, LucideIcon> = {
   Radio,
 };
 
-// Debug logging for production icon issue
-const DEBUG_DOCK = true;
+// Debug logging for production icon issue (set to false to disable)
+const DEBUG_DOCK = false;
 
 export default function Navbar() {
   const pathname = usePathname();
