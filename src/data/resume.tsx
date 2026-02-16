@@ -34,7 +34,7 @@ export const DATA = {
     "Learning, experimenting, and shipping AI projects",
   summary:
     "I'm a 12th-grade student interested in AI, automation, and web development. I've built several working projects using Python, JavaScript, and AI APIs to solve real problems for myself and people around me.",
-  avatarUrl: "/me.jpeg",
+  avatarUrl: "/bhaskar.jpg",
   keywords: [
     // Personal branding
     "bhaskar saikia",
